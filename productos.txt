@@ -1,0 +1,3 @@
+[{"title":"Camiseta Belgrano","price":9000,"thumbnail":"https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png","id":1},
+{"title":"Camiseta Talleres","price":8750,"thumbnail":"https://todosobrecamisetas.com/wp-content/uploads/camisetas-givova-talleres-2022-4.jpg","id":2},
+{"title":"Camiseta Instituto","price":7560,"thumbnail":"https://newsport.vteximg.com.br/arquivos/ids/3575839-1000-1000/2001-a.jpg?v=637503979277900000","id":3}]

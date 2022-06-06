@@ -1,88 +1,65 @@
-const fs = require("fs");
+const fs = require('fs')
 
-class Contenedor {
-    constructor(archivo) {
-        this.archivo = archivo;
+class Contenedor{
+    constructor(archivo){
+        this.archivo = archivo
     }
-
-    async save (product) {
-        try{
-            let listaProductos = JSON.parse(await fs.promises.readFile(`./${this.archivo}.txt`, 'utf-8'));
-            let idProducto = 0;
-            listaProductos.forEach(elemento => {
-                if(elemento.id > idProducto){
-                    idProducto = elemento.id
-                }
-            });
-            product.id = idProducto + 1;
-            listaProductos.push(product);
-            await fs.promises.writeFile(`./${this.archivo}.txt`, JSON.stringify(listaProductos));
+async getById(id){
+        try {
+            let data = await fs.promises.readFile(this.archivo, 'utf-8')
+            let archivoParseado = JSON.parse(data)
+            let encontrado = archivoParseado.find(object =>object.id === id)
+            if (encontrado){
+                return encontrado
+            }else{
+                return null
+            }
         } catch(error) {
-            product.id = 1;
-            let listaProductos = [product];
-            await fs.promises.writeFile(`./${this.archivo}.txt`, JSON.stringify(listaProductos));
+            console.log(`Hubo un error en getById ${error}`)
         }
-    }
-
-    async getById(id) {
+    } 
+    async getAll(){
         try {
-            const data = JSON.parse(await fs.promises.readFile(`./${this.archivo}.txt`, "utf-8"));
-            const objeto = data.find(objeto => objeto.id === id);
-            return (objeto ? console.log(objeto) : console.log("No se encontro el producto con el id ", id));
-        } catch (error) {
-            console.log("Error buscando producto por id: ", error);
+            let data = await fs.promises.readFile(this.archivo, 'utf-8')
+            return JSON.parse(data)
+        } catch(error) {
+            console.log(`Hubo un error en getAll ${error}`)
         }
-    }
-
-    async getAll() {
-        try {
-            const data = JSON.parse(await fs.promises.readFile(`./${this.archivo}.txt`, "utf-8"));
-            return (data ? console.log(data) : "El archivo está vacío");
-        } catch (error) {
-            console.log("Error buscando productos: ", error)
-        }
-    }
-
-    async deleteById(id) {
-        try {
-            const data = JSON.parse(await fs.promises.readFile(`./${this.archivo}.txt`, "utf-8"));
-            const arrayDelxID = data.filter(objeto => objeto.id !== id);
-            await fs.promises.writeFile(`./${this.archivo}.txt`, JSON.stringify(arrayDelxID))
-            console.log(`Producto con id ${id} borrado`)
-        } catch (error) {
-            console.log("Error eliminando objeto por id: ", error)
-        }
-    }
-
-    async deleteAll() {
-        try {
-            await fs.promises.writeFile(`./${this.archivo}.txt`, "")
-            console.log("Todos los productos fueron eliminados exitosamente")
-        } catch (error) {
-            console.log("Error eliminando objetos: ", error)
-        }
-    }
+    } 
 }
+const productos = new Contenedor ("productos.txt")
 
 
-const productos = [{
-    title: "Camiseta Belgrano",
-    price: 9000,
-    thumbnail: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png"
-}, {
-    title: "Camiseta Talleres",
-    price: 8750,
-    thumbnail: "https://todosobrecamisetas.com/wp-content/uploads/camisetas-givova-talleres-2022-4.jpg"
-}, {
-    title: "Camiseta Instituto",
-    price: 7560,
-    thumbnail: "https://newsport.vteximg.com.br/arquivos/ids/3575839-1000-1000/2001-a.jpg?v=637503979277900000"
-}]
+//---------------------------------------------------------------------*
 
-const archivo = new Contenedor("productos")
+const express = require('express')
+const app = express()
+const puerto = 8080
 
-//  archivo.save(productos[2]); 
-//  archivo.getById(1); 
-//  archivo.getAll(); 
-// archivo.deleteById(1); 
-// archivo.deleteAll(); 
+let productList = []
+
+app.use((req,res,next)=>{
+    productos.getAll().then((r)=>(productList = r))
+    next()
+})
+app.get('/', (req, res) => {
+    res.send('<h1 style="color: blue">Bienvenidos al server de Express</h1> <br> <button><a href= /productos> Listado de Productos </a> </button>  <button><a href= /productoRandom> Producto Random </a> </button>');
+})
+
+app.get('/productos', (req,res)=>{
+    res.send(productList)
+})
+
+app.get('/productoRandom', (req,res)=>{
+    const aleatorio =  Math.floor((Math.random() * (productList.length - 0 + 1)) + 0);
+    res.send(productList[aleatorio])
+
+})
+
+
+app.listen(puerto,(error)=>{
+    if (error){
+        return console.log(`el servidor tiene un error ${error}`)
+    }
+    console.log(`el servidor se inicio en el puerto ${puerto}`)
+})
