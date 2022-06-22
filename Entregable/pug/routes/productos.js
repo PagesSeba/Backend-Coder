@@ -21,31 +21,42 @@ const productos = [{
 
 router.get('/', (req, res) => {
     
+    try {
         res.render('prod', {productos});
+    }catch(error){
+        console.log('error al cargar la lista de productos: ',error)
+    }
 })
 
 
 
 router.post('/', (req, res) => {
     
-    let nuevoProducto = req.body
-    let newId
-    if (productos.length == 0) {
-        newId = 1
-    } else {
-        newId = productos[productos.length - 1].id
-        newId++
+    try {
+        let nuevoProducto = req.body
+        let newId
+        if (productos.length == 0) {
+            newId = 1
+        } else {
+            newId = productos[productos.length - 1].id
+            newId++
+        }
+        const nuevaLista = { ...nuevoProducto, id: newId }
+        productos.push(nuevaLista)
+        res.redirect('/')
+    }catch(error){
+        console.log('error al subir la lista de productos : ',error)
     }
-    const nuevaLista = { ...nuevoProducto, id: newId }
-    productos.push(nuevaLista)
-    res.redirect('/')
 })
 
 
 router.get('/:id', (req, res) => {
-    
-    let data = productos.find(producto => producto.id == req.params.id);
-    data ? res.json(data) : res.json({error: 'No existe ese ID'})
+    try {
+        let data = productos.find(producto => producto.id == req.params.id);
+        data ? res.json(data) : res.json({error: 'No existe ese ID'})
+    }catch(error){
+        console.log('error al intentar obtener producto por su ID: ',error)
+    }
     })
 
  
