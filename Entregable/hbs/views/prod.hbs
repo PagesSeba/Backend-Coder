@@ -1,0 +1,20 @@
+{{> nav}}
+
+{{#if productos}}
+<div class="container">
+{{#each productos}}
+<div class="card">
+  <h3>{{title}}</h3>
+  <p>Precio: {{price}}</p>
+  <img src="{{thumbnail}}">
+  <form action="/productos/eliminar/{{id}}" method="post">
+    <button type="submit" class="btn btn-danger">Borrar</button>
+  </form>
+</div>
+{{/each}}
+</div>
+{{else}}
+                    <div>
+                        <p>No se encontraron productos</p>
+                    </div>
+            {{/if}}
