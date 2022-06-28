@@ -1,1 +1,0 @@
-Me resultó mucho mas cómodo y fácil trabajar con pug y ejs que con hbs, asi que preferiría usar uno de esos dos para mi proyecto
