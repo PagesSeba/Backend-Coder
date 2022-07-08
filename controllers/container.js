@@ -1,6 +1,5 @@
 const fs = require('fs');
-const { products } = require('./controllerProducts.js');
-
+const productos = require('../data/products.json');
 class Container {
     constructor(archivo) {
         this.archivo = archivo;
@@ -20,6 +19,7 @@ class Container {
         try {
             obj.id = await this.generateId();
             obj.timestamp = new Date().toLocaleString("fr-FR");
+            obj.products = new Array;
             this.objects.push(obj);
             this.writeData();
             return obj.id;
@@ -85,7 +85,7 @@ class Container {
         try {
             const cartSelected = this.getById(idCartSelected);
             if (cartSelected == null) return;
-            const productSelected = products.getById(idProduct);
+            const productSelected = productos.filter(product => product.id === idProduct);
             if (productSelected == null) return;
             cartSelected.products.push(productSelected);
             this.writeData();
@@ -94,7 +94,6 @@ class Container {
             console.log(err);
         }
     }
-    
     deleteProduct(idCartSelected, idProduct) {
         try {
             const cartSelected = this.getById(idCartSelected);

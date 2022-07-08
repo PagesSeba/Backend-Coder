@@ -42,7 +42,43 @@
     "timestamp": "06/07/2022, 12:30:49"
   },
   {
+    "products": [
+      [
+        {
+          "id": 1,
+          "name": "Belgrano",
+          "description": "Camiseta Titular 2022",
+          "code": "CAB001",
+          "url": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+          "price": 9000,
+          "stock": 10,
+          "timestamp": "05/07/2022, 17:50:42"
+        }
+      ]
+    ],
     "id": 6,
     "timestamp": "07/07/2022, 00:32:24"
+  },
+  {
+    "id": 7,
+    "timestamp": "07/07/2022, 22:29:22"
+  },
+  {
+    "id": 8,
+    "timestamp": "07/07/2022, 22:36:51",
+    "products": [
+      [
+        {
+          "id": 3,
+          "name": "Instituto",
+          "description": "Camiseta Titular 2022",
+          "code": "IAAC001",
+          "url": "https://newsport.vteximg.com.br/arquivos/ids/3575839-1000-1000/2001-a.jpg?v=637503979277900000",
+          "price": 7600,
+          "stock": 20,
+          "timestamp": "05/07/2022, 17:53:14"
+        }
+      ]
+    ]
   }
 ]

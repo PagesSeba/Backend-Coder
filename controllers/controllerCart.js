@@ -26,14 +26,13 @@ const getProducts = (req, res) => {
 }
 
 const addProductToCart = (req, res) => {
-	const idCartSelected = Number(req.params.id);
-	if (isNaN(idCartSelected)) return res.status(400).send({ message: 'Ingresa el ID de un carrito listado' });
-	const { idProduct } = req.body;
-	const productSaved = carts.saveProduct(idCartSelected, idProduct);
-	if (!productSaved) return res.status(404).send({ message: 'Error al intentar agregar un producto al carrito' });
-	res.json({ message: productSaved });
+	const id = Number(req.params.id);
+	const id_prod = Number(req.params.id_prod);
+	if (isNaN(id) || isNaN(id_prod)) return res.status(400).send({ message: 'Ingresa el ID de un carrito listado' });
+	const productSaved = carts.saveProduct(id, id_prod);
+	if (productSaved == null || !productSaved) return res.status(404).send({ message: 'Error al intentar agregar un producto al carrito' });
+	res.json({ message: 'Producto cargado' });
 }
-
 
 const deleteProduct = (req, res) => {
 	const id = Number(req.params.id);
