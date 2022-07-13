@@ -1,0 +1,37 @@
+.container{
+    margin-top: 50px;
+    background-color: darkolivegreen;
+    padding-bottom: 10px;
+}
+
+.inputEnviar{
+    margin: 20px 0px;
+}
+
+.subtitulo{
+    color: brown;
+}
+
+
+thead, tbody{
+    text-align: center;
+}
+
+
+p{
+    display: inline;
+}
+
+.correo{
+    color: blue;
+    font-weight: bold;
+}
+
+.fecha{
+    color: brown;
+}
+
+.mensaje{
+    color: green;
+    font-weight: bold;
+}

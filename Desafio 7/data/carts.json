@@ -1,17 +1,6 @@
 [
   {
-    "products": [
-      {
-        "name": "Belgrano",
-        "description": "Camiseta Titular 2022",
-        "code": "CAB001",
-        "url": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
-        "price": 9000,
-        "stock": 10,
-        "id": 1,
-        "timestamp": "05/07/2022, 17:50:42"
-      }
-    ],
+    "products": [],
     "id": 4,
     "timestamp": "06/07/2022, 12:20:18"
   },
@@ -67,6 +56,36 @@
     "id": 8,
     "timestamp": "07/07/2022, 22:36:51",
     "products": [
+      [
+        {
+          "id": 3,
+          "name": "Instituto",
+          "description": "Camiseta Titular 2022",
+          "code": "IAAC001",
+          "url": "https://newsport.vteximg.com.br/arquivos/ids/3575839-1000-1000/2001-a.jpg?v=637503979277900000",
+          "price": 7600,
+          "stock": 20,
+          "timestamp": "05/07/2022, 17:53:14"
+        }
+      ]
+    ]
+  },
+  {
+    "id": 9,
+    "timestamp": "08/07/2022, 12:32:05",
+    "products": [
+      [
+        {
+          "id": 2,
+          "name": "Talleres",
+          "description": "Camiseta Titular 2022",
+          "code": "CAT001",
+          "url": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-givova-talleres-2022-4.jpg",
+          "price": 8750,
+          "stock": 10,
+          "timestamp": "05/07/2022, 17:51:37"
+        }
+      ],
       [
         {
           "id": 3,

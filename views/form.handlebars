@@ -1,0 +1,48 @@
+<section class="p-4 bg-light">
+	<h2>Ingrese Producto</h2>
+	<form id="form-add-camiseta">
+		<div class='mb-3'>
+			<label class='form-label fw-bold' for='equipo'>Equipo</label>
+			<input id="equipo-camiseta" class="form-control" type='text' name='equipo' />
+		</div>
+		<div class='mb-3'>
+			<label class='form-label fw-bold' for='descripcion'>Descripcion</label>
+			<input id="desc-camiseta" class="form-control" type='text' name='descripcion' />
+		</div>
+		<div class='mb-3'>
+			<label class='form-label fw-bold' for='precio'>Precio</label>
+			<input id="precio-camiseta" class="form-control" type='number' name='precio' />
+		</div>
+		<div class='mb-3'>
+			<label class='form-label fw-bold' for='url'>Foto URL</label>
+			<input id="url-camiseta" class="form-control" type='url' name='url' />
+		</div>
+		<div class='mb-3'>
+			<input class="btn btn-success" type='submit' value='Enviar' />
+		</div>
+	</form>
+</section>
+<section class="p-4">
+	<h2>Vista de Productos</h2>
+	<table class="table table-dark">
+		<thead>
+			<tr>
+				<th>Equipo</th>
+				<th>Descripcion</th>
+				<th>Precio</th>
+				<th>Foto</th>
+			</tr>
+		</thead>
+		<tbody id="table-camiseta"></tbody>
+	</table>
+	<h2 id="no-camiseta" class="bg-light p-4 text-danger">No hay productos listados</h2>
+</section>
+<section class="p-4 mt-4 bg-light" >
+	<h2 class="mb-4">Centro de Mensajes</h2>
+	 <form onsubmit="return addMessage(this)">
+        <input type="email" class="form-control" required id="correo" placeholder="ejemplo@gmail.com">
+        <div id="messages"></div>
+        <input type="text" class="form-control"  id="text" placeholder="Escribe aca tu mensaje">
+        <input type="submit" class=" btn btn-primary inputEnviar"></input>
+    </form>
+</section>
