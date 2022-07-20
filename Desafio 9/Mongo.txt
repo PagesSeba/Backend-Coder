@@ -1,0 +1,145 @@
+mongo
+use commerce
+
+-- Agregar mensajes --
+
+db.mensajes.insertOne({ username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'})
+
+db.mensajes.insertMany([{ username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}, { username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}, { username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}, { username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}, { username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}, { username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}, { username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}, { username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}, { username: 'user1', mail: 'user@gmail.com', mensaje: 'Probando', ts: '20/07/2022 13:20:23'}])
+
+
+
+-- Agregar productos --
+
+db.productos.insertOne({
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 9900,
+            })
+
+db.productos.insertMany([{
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 9900,
+            },
+            {
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 1000,
+            },
+            {
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 500,
+            },
+            {
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 2500,
+            },
+            {
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 1100,
+            },
+            {
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 6000,
+            },
+            {
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 4000,
+            },
+            {
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 3000,
+            },
+            {
+                categoria: "titular",
+                descripcion: "Camiseta Titular 2022",
+                url: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/672/177/products/celeste1-85db98b8d9c6eba4cd16455527422469-640-0.png",
+                equipo: "Belgrano",
+                precio: 40,
+            }])
+
+-- Listar Mensajes --
+
+db.mensajes.find().pretty() 
+
+-- Listar productos--
+
+db.productos.find().pretty()
+
+-- Contar Mensajes --
+db.mensajes.find().count()
+
+-- Contar Productos--
+db.productos.find().count()
+
+
+-- CRUD --
+-- Agregar un Producto mas --
+
+db.productos.insertOne({
+                categoria: "suplente",
+                descripcion: "Camiseta suplente 2022",
+                url: "https://todosobrecamisetas.com/wp-content/uploads/camisetas-givova-talleres-2022-4.jpg",
+                equipo: "Talleres",
+                precio: 7000,
+            })
+
+-- Listar por nombre especifico --
+db.productos.find({equipo: 'Talleres'}).pretty()
+
+-- Listar precio menor a 1000 --
+
+db.productos.find({precio: {$lt: 1000}}).pretty()
+
+-- Listar precio entre 1000 y 3000 --
+
+db.productos.find({$and: [{precio: {$gte: 1000}}, {precio: {$lte: 3000}}]}).pretty()
+
+-- Listar precio mayor a 3000 --
+
+db.productos.find({precio: {$gt: 3000}}).pretty()
+
+-- Listar 3er producto mas barato --
+
+db.productos.find({}, {equipo: 1, _id: 0}).sort({precio: 1}).limit(1).skip(2).pretty()
+
+-- Actualizar con campo "Stock" --
+
+db.productos.updateMany({}, {$set: {'stock': 100}})
+
+-- Actualizar Stock a 0 en productos con precio mayor a 4000--
+
+db.productos.updateMany({precio: {$gt: 4000}}, {$set: {stock: 0}})
+
+-- Borrar productos con precio menor a 1000 --
+
+db.productos.deleteMany({precio: {$lt: 1000}})
+
+-- Crear un usuario "pepe" que solo pueda leer --
+
+db.createUser({user: 'pepe', pwd: 'asd456', roles: [{role: 'read', db: 'ecommerce'}]})
