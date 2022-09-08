@@ -1,0 +1,25 @@
+
+
+-NODEMON
+npx nodemon ./server.js -p 8080 -m fork
+npx nodemon ./server.js -p 8080 -m cluster
+
+
+- FOREVER
+forever start  ./server.js -p 8080 -m fork
+forever start  ./server.js -p 8080 -m cluster
+forever list
+
+
+- PM2
+pm2 start  ./server.js – – -p 8080 -m fork
+pm2 start  ./server.js – – -p 8080 -m cluster
+pm2 list
+
+
+- NGINX
+pm2 start ./server.js -- -- -p 8081 -m cluster
+pm2 start ./server2-1.js -- -- -p 8082 -m fork
+pm2 start ./server2-2.js -- -- -p 8083 -m fork
+pm2 start ./server2-3.js -- -- -p 8084 -m fork
+pm2 start ./server2-4.js -- -- -p 8085 -m fork 
