@@ -10,7 +10,7 @@ const arg = yarg
     m: "mode",
   })
   .default({
-    port: 8080,
+    port: process.env.PORT || 8080,
     mode: "fork",
   }).argv;
 
