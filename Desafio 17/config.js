@@ -7,11 +7,9 @@ const yarg = yargs(process.argv.slice(2));
 const arg = yarg
   .alias({
     p: "port",
-    m: "mode",
   })
   .default({
     port: process.env.PORT || 8080,
-    mode: "fork",
   }).argv;
 
 module.exports = {
