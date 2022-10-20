@@ -1,0 +1,7 @@
+
+[2022-10-20T16:57:59.588] [WARN] default - Ruta GET / no implementada
+[2022-10-20T17:00:20.787] [WARN] default - Ruta GET /graphsql no implementada
+[2022-10-20T17:00:39.800] [WARN] default - Ruta GET /favicon.ico no implementada
+[2022-10-20T17:01:56.469] [WARN] default - Ruta GET /api/productos no implementada
+[2022-10-20T17:02:31.223] [WARN] default - Ruta GET /favicon.ico no implementada
+[2022-10-20T17:31:50.107] [WARN] default - Ruta GET /favicon.ico no implementada
